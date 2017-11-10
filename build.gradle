@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+group = 'org.wjw.StandardRibbon'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+  mavenLocal()
+  maven{ url "http://SVN:8081/nexus/content/groups/public"}
+  mavenCentral()
+  jcenter()
+}
+
+
+dependencies {
+	compile('org.slf4j:slf4j-api')
+	compile('org.slf4j:slf4j-log4j12:1.7.25')
+	compile('commons-logging:commons-logging:1.2')
+	
+	compile('io.github.openfeign:feign-core:9.5.0')
+	compile('io.github.openfeign:feign-jackson:9.5.0')
+	compile('io.github.openfeign:feign-ribbon:9.5.0')
+	
+	compile('org.springframework:spring-context:4.3.12.RELEASE')
+}
