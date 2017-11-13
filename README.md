@@ -1,0 +1,1 @@
+no Spring env and run Feign+Ribbon demo!
