@@ -1,6 +1,7 @@
 package org.wjw.standardribbon;
 
 import org.wjw.standardribbon.model.User;
+import org.wjw.standardribbon.service.PropService;
 import org.wjw.standardribbon.service.RemoteService;
 
 import com.netflix.client.ClientFactory;
@@ -19,7 +20,7 @@ import feign.ribbon.RibbonClient;
 
 public class StdRibbon {
 	public static void main(String[] args) throws Exception {
-		ConfigurationManager.loadPropertiesFromResources("sample-client.properties");
+		ConfigurationManager.loadPropertiesFromResources("ribbon.properties");
 
 		RibbonClient client = RibbonClient.builder().lbClientFactory(new LBClientFactory() {
 			@Override
@@ -53,5 +54,14 @@ public class StdRibbon {
 			User userB=service.getOwner(user);
 			System.out.println("user:" + userB);
 		}
+		
+		PropService propService = Feign.builder().client(client).target(PropService.class, "http://config-server/");
+		
+		String result = propService.getProp("ServiceTwo-dev.json");
+		System.out.println(result);
+		
+		result = propService.getProp("ServiceTwo-dev.yml");
+		System.out.println(result);
+		
 	}
 }
