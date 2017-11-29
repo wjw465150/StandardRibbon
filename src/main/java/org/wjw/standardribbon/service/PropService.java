@@ -1,7 +1,5 @@
 package org.wjw.standardribbon.service;
 
-import org.wjw.standardribbon.model.User;
-
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;

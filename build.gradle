@@ -22,6 +22,4 @@ dependencies {
 	compile('io.github.openfeign:feign-core:9.5.0')
 	compile('io.github.openfeign:feign-jackson:9.5.0')
 	compile('io.github.openfeign:feign-ribbon:9.5.0')
-	
-	compile('org.springframework:spring-context:4.3.12.RELEASE')
 }
